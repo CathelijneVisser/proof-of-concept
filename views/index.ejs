@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sportiek</title>
+</head>
+
+<body>
+
+    <table>
+        <tr>
+            <th>Naam</th>
+            <th>Lengte</th>
+            <th>Aantal bedden</th>
+            <th class="datum">23-12-2023</th>
+            <th class="datum">30-12-2023</th>
+            <th class="datum">06-01-2024</th>
+            <th class="datum">13-01-2024</th>
+            <th class="datum">20-01-2024</th>
+            <th class="datum">27-02-2024</th>
+            <th class="datum">03-02-2024</th>
+        </tr>
+
+        <% accomodations.forEach(accomodation=> { %>
+
+            <tr>
+                <th>
+                    <% accomodation.name %>
+                </th>
+                <th>
+                    <% accomodation.duration %> dagen
+                </th>
+                <th>
+                    <% accomodation.numberOfBeds %>
+                </th>
+                <th class="datum">23-12-2023</th>
+                <th class="datum">30-12-2023</th>
+                <th class="datum">06-01-2024</th>
+                <th class="datum">13-01-2024</th>
+                <th class="datum">20-01-2024</th>
+                <th class="datum">27-02-2024</th>
+                <th class="datum">03-02-2024</th>
+            </tr>
+
+            <% }) %>
+
+
+    </table>
+
+
+
+</body>
+
+</html>
