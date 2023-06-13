@@ -9,47 +9,60 @@
 
 <body>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Naam</th>
-                <th>Lengte</th>
-                <th>Aantal bedden</th>
-                <th class="datum">23-12-2023</th>
-                <th class="datum">30-12-2023</th>
-                <th class="datum">06-01-2024</th>
-                <th class="datum">13-01-2024</th>
-                <th class="datum">20-01-2024</th>
-                <th class="datum">27-02-2024</th>
-                <th class="datum">03-02-2024</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% accomodationId.forEach(accomodation=> { %>
-            <tr>
-                <th>
-                   <% accomodation.name %>
-                </th>
-                <th>
-                    
-                </th>
-                <th>
-                    
-                </th>
-                <th class="datum"></th>
-                <th class="datum"></th>
-                <th class="datum"></th>
-                <th class="datum"></th>
-                <th class="datum"></th>
-                <th class="datum"></th>
-                <th class="datum"></th>
-            </tr>
-            <% } ) %>
-        </tbody>
+    <header></header>
+
+    <main>
+        <section class="left-side-information">
+            <table border="1" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <th>Naam</th>
+                        <th>Lengte</th>
+                        <th>Aantal bedden</th>
+                        <th class="datum">25-11-2023</th>
+                        <th class="datum">02-12-2023</th>
+                        <th class="datum">09-12-2023</th>
+                        <th class="datum">16-12-2023</th>
+                        <th class="datum">23-12-2023</th>
+                        <th class="datum">30-12-2023</th>
+                        <th class="datum">06-01-2024</th>
+                        <th class="datum">13-01-2024</th>
+                        <th class="datum">20-01-2024</th>
+                        <th class="datum">27-02-2024</th>
+                        <th class="datum">03-02-2024</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% const firstId=[...new Set(data.map(dataload=> dataload.accomodationId))]
+                        firstId.forEach(id => { const rows = data.filter(dataload =>
+                        dataload.accomodationId === id); if (rows.length > 0) { %>
+                        <tr>
+                            <td>
+                                <%= rows[0].complex_name %>
+                            </td>
+                            <td>
+                                <%= rows[0].duration %> dagen
+                            </td>
+                            <td>
+                                <%= rows[0].numberOfBeds %>
+                            </td>
+
+                            <% const dates=["25-11-2023", "02-12-2023" , "09-12-2023" , "16-12-2023" , "23-12-2023"
+                                , "30-12-2023" , "06-01-2023" , "13-01-2023" , "20-01-2023" , "27-01-2023"
+                                , "03-02-2023" ]; for (let i=0; i < 11; i++){ if (rows[0].departureDate==dates[i]) { %>
+                                <td style="--bg-color: green;"></td>
+                                <% } else { console.log (rows[0].departureDate)%>
+                                    <td style="--bg-color: red;"></td>
+                                    <% } i=0 } %>
+                        </tr>
+                        <% } }); %>
+                </tbody>
+            </table>
+        </section>
+    </main>
 
 
 
-    </table>
 
 
 

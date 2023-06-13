@@ -1,46 +1,37 @@
-//import express en .env
+// Import the required modules
 import express from "express"
 import dotenv from 'dotenv'
 
-//activeer .env
+// Create a new Express app
+const app = express()
 dotenv.config()
 
-//maak een nieuwe express app
-const server = express()
+// Set EJS as the template engine and specify the views directory
+app.set("view engine", "ejs")
+app.set("views", "./views")
 
-//views en public instellen
-server.use(express.static("public"))
-server.set("view engine", "ejs")
-server.set("views", "./views")
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
-server.use(express.json())
-server.use(express.urlencoded({ extended: true }))
+// Serve static files from the public directory
+app.use(express.static("public"))
 
-//route
+app.get("/", async function (request, response) {
 
-server.get("/", (request, response) => {
-  let url = `${process.env.API_URL}`
-  fetchJson(url).then((accomodations) => {
-    console.log(accomodations)
-    response.render("index", accomodations)
+  fetchJson(`${process.env.sportiek}`).then((data) => {
+    response.render("index", { data: data })
   })
 })
 
 //poortnummer instellen
-server.set("port", 8000)
-
+app.set("port", 8000)
 //start de server
-server.listen(server.get("port"), () => {
-  console.log(`Application started on http://localhost:${server.get("port")}`)
+app.listen(app.get("port"), () => {
+  console.log(`Application started on http://localhost:${app.get("port")}`)
 })
 
-/**
- * Wraps the fetch api and returns the response body parsed through json
- * @param {*} url the api endpoint to address
- * @returns the json response from the api endpoint
- */
-async function fetchJson(url) {
-  return await fetch(url)
+async function fetchJson(urls) {
+  return await fetch(`${process.env.sportiek}`)
     .then((response) => response.json())
     .catch((error) => error)
 }
