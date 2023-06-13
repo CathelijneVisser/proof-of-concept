@@ -19,7 +19,21 @@ app.use(express.static("public"))
 app.get("/", async function (request, response) {
 
   fetchJson(`${process.env.sportiek}`).then((data) => {
-    response.render("index", { data: data })
+    const allIds = [...new Set(data.map(item => item.accomodationId))]
+
+    const accomodations = []
+    allIds.forEach(id => {
+      const rows = data.filter(item => {
+        return item.accomodationId === id;
+      })
+      if (rows.length) {
+        accomodations[id] = rows
+      }
+    })
+
+    console.log(typeof accomodations)
+
+    response.render("index", { data, accomodations: accomodations })
   })
 })
 
