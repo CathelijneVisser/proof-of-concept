@@ -13,13 +13,17 @@ server.use(express.static("public"))
 server.set("view engine", "ejs")
 server.set("views", "./views")
 
+server.use(express.json())
+server.use(express.urlencoded({ extended: true }))
+
 //route
 
 server.get("/", (request, response) => {
-  let url = `${process.env.API_URL}?page=0`
+  let url = `${process.env.API_URL}`
   fetchJson(url).then((accomodations) => {
-      response.render("index", accomodations)
-    })
+    console.log(accomodations)
+    response.render("index", accomodations)
+  })
 })
 
 //poortnummer instellen
