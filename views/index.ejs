@@ -45,13 +45,13 @@
                             <% const dates=["25-11-2023", "02-12-2023" , "09-12-2023" , "16-12-2023" , "23-12-2023"
                                 , "30-12-2023" , "06-01-2023" , "13-01-2023" , "20-01-2023" , "27-01-2023"
                                 , "03-02-2023" ]; for (let i=0; i < 11; i++){ if
-                                (accomodation[0].departureDate==dates[i]) { %>
+                                (accomodation[0].departureDate==dates[i]) { console.log(accomodation) %>
                                 <td style="--bg-color: green;"></td>
                                 <% } else { %>
                                     <td style="--bg-color: red;"></td>
                                     <% } } %>
                         </tr>
-                        <% } ); %>
+                        <% } ) %>
                 </tbody>
             </table>
             <a href="&filter=numberOfBeds">aantal bedden</a>

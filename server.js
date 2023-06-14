@@ -1,4 +1,4 @@
-// Import the required modules
+// Import
 import express from "express"
 import dotenv from 'dotenv'
 
@@ -31,7 +31,6 @@ app.get("/", async function (request, response) {
       }
     })
 
-    console.log(typeof accomodations)
 
     response.render("index", { data, accomodations: accomodations })
   })
