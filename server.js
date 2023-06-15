@@ -21,7 +21,7 @@ const sportiek1 = process.env.sportiek
 const dataSportiek = [sportiek]
 const dataSportiek1 = [sportiek1]
 const [data1] = await Promise.all(dataSportiek.map(fetchJson))
-const [data2] = await Promise.all(dataSportiek.map(fetchJson))
+const [data2] = await Promise.all(dataSportiek1.map(fetchJson))
 const data = { data1, data2 }
 
 
@@ -45,23 +45,21 @@ const filterData = data1.reduce((acc, item) => {
       duration: item.duration,
       departurePricePersons: item.departurePricePersons,
       departureDates: [item.departureDate]
-    });
+    })
   }
-
-  return acc;
-}, []);
-
+  return acc
+}, [])
 
 function sort(filter_property){
   // complex_name
   filterData.sort(function (a, b) {
     if (a[filter_property] < b[filter_property]) {
-      return -1;
+      return -1
     }
     if (a[filter_property] > b[filter_property]) {
-      return 1; 
+      return 1 
     }
-    return 0;
+    return 0
   })
 }
 
@@ -69,11 +67,8 @@ function sort(filter_property){
 app.get("/", async function (request, response) {
   let filter = request.query.filter || "complex_name"
   sort(filter)
-  response.render("index", { filterData: filterData });
-});
-
-
-
+  response.render("index", { filterData: filterData })
+})
 
 //poortnummer instellen
 app.set("port", 8000)
@@ -87,3 +82,4 @@ async function fetchJson(urls) {
     .then((response) => response.json())
     .catch((error) => error)
 }
+
