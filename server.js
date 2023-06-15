@@ -58,6 +58,9 @@ const filterData = data1.reduce((acc, item) => {
       accomodationId: item.accomodationId,
       variantName: item.variantName,
       complex_name: item.complex_name,
+      numberOfBeds: item.numberOfBeds,
+      duration: item.duration,
+      departurePricePersons: item.departurePricePersons,
       departureDates: [item.departureDate]
     });
   }
@@ -71,7 +74,7 @@ app.get("/", async function (request, response) {
 
 
 //poortnummer instellen
-app.set("port", 5000)
+app.set("port", 8000)
 //start de server
 app.listen(app.get("port"), () => {
   console.log(`Application started on http://localhost:${app.get("port")}`)

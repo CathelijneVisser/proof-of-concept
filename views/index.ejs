@@ -8,83 +8,81 @@
 </head>
 
 <body>
-    <main>
-        <section class="left-side-information">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Naam</th>
-                        <th>Beschrijving</th>
-                        <th>Lengte</th>
-                        <th>Aantal bedden</th>
-                        <th>Aantal mensen</th>
-                        <th class="date">25-11-2023</th>
-                        <th class="date">02-12-2023</th>
-                        <th class="date">09-12-2023</th>
-                        <th class="date">16-12-2023</th>
-                        <th class="date">23-12-2023</th>
-                        <th class="date">30-12-2023</th>
-                        <th class="date">06-01-2024</th>
-                        <th class="date">13-01-2024</th>
-                        <th class="date">20-01-2024</th>
-                        <th class="date">27-02-2024</th>
-                        <th class="date">03-02-2024</th>
-                        <th class="date">10-02-2024</th>
-                        <th class="date">17-02-2024</th>
-                        <th class="date">24-02-2024</th>
-                        <th class="date">02-03-2024</th>
-                        <th class="date">09-03-2024</th>
-                        <th class="date">16-03-2024</th>
-                        <th class="date">23-03-2024</th>
-                        <th class="date">30-03-2024</th>
-                        <th class="date">06-04-2024</th>
-                        <th class="date">13-04-2024</th>
-                        <th class="date">20-04-2024</th>
-                        <th class="date">27-04-2024</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    complex -> accomodation -> room details
-                    <% complex.forEach(accomodation=> {  %>
-                        <% accomodation.forEach(room=> {  %>
-                            <% if( room.numberOfBeds == room.departurePricePersons) { %>
-                                <% room.forEach() %>
-                    
-                        <tr>
-                            <td>
-                                <%= room.complex_name %>
-                            </td>
-                            <td>
-                                <%- room.accomodatie_description %>
-                            </td>
-                            <td>
-                                <%= room.duration %> dagen
-                            </td>
-                            <td>
-                                <%= room.numberOfBeds %>
-                            </td>
-                            <td>
-                                <%= room.departurePricePersons %>
-                            </td>
+    <section>
+        <table>
+            <thead>
+                <tr>
+                    <th>Naam</th>
+                    <th>Aantal bedden</th>
+                    <th>Aantal mensen</th>
+                    <th class="date">25-11-2023</th>
+                    <th class="date">02-12-2023</th>
+                    <th class="date">09-12-2023</th>
+                    <th class="date">16-12-2023</th>
+                    <th class="date">23-12-2023</th>
+                    <th class="date">06-01-2024</th>
+                    <th class="date">13-01-2024</th>
+                    <th class="date">20-01-2024</th>
+                    <th class="date">27-02-2024</th>
+                    <th class="date">03-02-2024</th>
+                    <th class="date">10-02-2024</th>
+                    <th class="date">17-02-2024</th>
+                    <th class="date">24-02-2024</th>
+                    <th class="date">02-03-2024</th>
+                    <th class="date">09-03-2024</th>
+                    <th class="date">16-03-2024</th>
+                    <th class="date">23-03-2024</th>
+                    <th class="date">30-03-2024</th>
+                    <th class="date">06-04-2024</th>
+                    <th class="date">13-04-2024</th>
+                    <th class="date">20-04-2024</th>
+                    <th class="date">27-04-2024</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% filterData.forEach(info => {  %>
+                <tr>
+                    <td><%= info.complex_name %></td>
+                    <td><%= info.numberOfBeds %></td>
+                    <td><%= info.departurePricePersons %></td>
 
-                            <% const dates=["25-11-2023", "02-12-2023" , "09-12-2023" , "16-12-2023" , "23-12-2023"
-                                , "30-12-2023" , "06-01-2024" , "13-01-2024" , "20-01-2024" , "27-01-2024" , "03-02-2024",
-                                "10-02-2024", "17-02-2024", "24-02-2024", "02-03-2024", "09-03-2024", "16-03-2024", 
-                                "23-03-2024", "30-03-2024", "06-04-2024", "13-04-2024", "20-04-2024", "27-04-2024" ]; 
-                                
-                                for (let i=0; i < dates.length; i++){ 
-                                    if (room.departureDate == dates[i]) { %>
-                                <td class="date" style="--bg-color: green;"><%= room.departureDate%></td>
-                                <% } else { %>
-                                    <td class="date" style="--bg-color: red;"><%= room.departureDate%></td>
-                                    <% } } %>
-                        </tr>
-                        <% } }) }) %>
-                </tbody>
-            </table>
-            <a href="&filter=numberOfBeds">aantal bedden</a>
-        </section>
-    </main>
+                    <% 
+                    const dates=    
+                    ['25-11-2023', '02-12-2023' , '09-12-2023' , '16-12-2023' , '23-12-2023'
+                    , '30-12-2023' , '06-01-2024' , '13-01-2024' , '20-01-2024' , '27-01-2024' , '03-02-2024',
+                    '10-02-2024', '17-02-2024', '24-02-2024', '02-03-2024', '09-03-2024', '16-03-2024', 
+                    '23-03-2024', '30-03-2024', '06-04-2024', '13-04-2024', '20-04-2024', '27-04-2024' ];
+
+                   
+                        for(let i=0; i < dates.length; i++){
+                            console.log(dates[i])
+                           
+                            if (info.departureDates.includes(dates[i])){
+                                %><td class="date" style="--bg-color: green;"></td><%
+                            }
+                            else{
+                                %><td class="date" style="--bg-color: red;"></td><%
+                            }
+                        }
+                        
+                   %>
+
+
+
+
+
+
+                      
+                      
+                            
+                </tr>
+              
+                </tbody>  
+                <% }) %>
+        </table>
+        <a href="&filter=numberOfBeds">aantal bedden</a>
+    </section>
+    
 
 
 
