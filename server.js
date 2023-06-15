@@ -16,32 +16,14 @@ app.use(express.urlencoded({ extended: true }))
 // Serve static files from the public directory
 app.use(express.static("public"))
 
-const sportiek =
-  "https://raw.githubusercontent.com/DikkeTimo/proof-of-concept-Sportiek/main/json/localjssportiek.json";
+const sportiek = process.env.sportiek
+const sportiek1 = process.env.sportiek
+const dataSportiek = [sportiek]
+const dataSportiek1 = [sportiek1]
+const [data1] = await Promise.all(dataSportiek.map(fetchJson))
+const [data2] = await Promise.all(dataSportiek.map(fetchJson))
+const data = { data1, data2 }
 
-const datasportiek = [[sportiek]];
-const [data1] = await Promise.all(datasportiek.map(fetchJson));
-const data = { data1 };
-
-// app.get("/", async function (request, response) {
-
-//   fetchJson(`${process.env.sportiek}`).then((data) => {
-//     const allIds = [...new Set(data.map(item => item.accomodationId))]
-
-//     const accomodations = []
-//     allIds.forEach(id => {
-//       const rows = data.filter(item => {
-//         return item.accomodationId === id
-//       })
-//       if (rows.length) {
-//         accomodations[id] = rows
-//       }
-//     })
-
-
-//     response.render("index", { data, complex: accomodations })
-//   })
-// })
 
 
 const filterData = data1.reduce((acc, item) => {
@@ -59,6 +41,7 @@ const filterData = data1.reduce((acc, item) => {
       variantName: item.variantName,
       complex_name: item.complex_name,
       numberOfBeds: item.numberOfBeds,
+      bedrooms: item.bedrooms,
       duration: item.duration,
       departurePricePersons: item.departurePricePersons,
       departureDates: [item.departureDate]
@@ -68,9 +51,28 @@ const filterData = data1.reduce((acc, item) => {
   return acc;
 }, []);
 
+
+function sort(filter_property){
+  // complex_name
+  filterData.sort(function (a, b) {
+    if (a[filter_property] < b[filter_property]) {
+      return -1;
+    }
+    if (a[filter_property] > b[filter_property]) {
+      return 1; 
+    }
+    return 0;
+  })
+}
+
+//route
 app.get("/", async function (request, response) {
-  response.render("index", { data1: data1, filterData: filterData });
+  let filter = request.query.filter || "complex_name"
+  sort(filter)
+  response.render("index", { filterData: filterData });
 });
+
+
 
 
 //poortnummer instellen
