@@ -12,14 +12,15 @@
         <table>
             <thead>
                 <tr>
+                    <th>Skigebied</th>
+                    <th>Dorp</th>
                     <th>Naam</th>
-                    <th>Aantal bedden</th>
-                    <th>Aantal mensen</th>
                     <th class="date">25-11-2023</th>
                     <th class="date">02-12-2023</th>
                     <th class="date">09-12-2023</th>
                     <th class="date">16-12-2023</th>
                     <th class="date">23-12-2023</th>
+                    <th class="date">30-12-2023</th>
                     <th class="date">06-01-2024</th>
                     <th class="date">13-01-2024</th>
                     <th class="date">20-01-2024</th>
@@ -42,9 +43,9 @@
             <tbody>
                 <% filterData.forEach(info => {  %>
                 <tr>
+                    <td></td>
+                    <td></td>
                     <td><%= info.complex_name %></td>
-                    <td><%= info.numberOfBeds %></td>
-                    <td><%= info.departurePricePersons %></td>
 
                     <% 
                     const dates=    
@@ -55,7 +56,6 @@
 
                    
                         for(let i=0; i < dates.length; i++){
-                            console.log(dates[i])
                            
                             if (info.departureDates.includes(dates[i])){
                                 %><td class="date" style="--bg-color: green;"></td><%
@@ -65,29 +65,19 @@
                             }
                         }
                         
-                   %>
-
-
-
-
-
-
-                      
-                      
+                   %>  
                             
                 </tr>
               
                 </tbody>  
                 <% }) %>
         </table>
-        <a href="&filter=numberOfBeds">aantal bedden</a>
     </section>
-    
-
-
-
-
-
+    <nav>
+        <a href="?filter=complex_name">complex naam</a>
+        <a href="?filter=numberOfBeds">aantal bedden</a>
+        <a href="?filter=bedrooms">aantal slaapkamers</a>
+    </nav>
 
 </body>
 
