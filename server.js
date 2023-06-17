@@ -25,7 +25,6 @@ const [data2] = await Promise.all(dataSportiek1.map(fetchJson))
 const data = { data1, data2 }
 
 
-
 const filterData = data1.reduce((acc, item) => {
   const existingItem = acc.find((el) => el.variantName === item.variantName);
 
