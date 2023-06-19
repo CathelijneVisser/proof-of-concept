@@ -8,40 +8,53 @@
 </head>
 
 <body>
-
-
+    <div class="dropdown">
+        <button class="dropdown-btn">Skigebied</button>
+        <div class="content">
+            <% complexnamen.forEach(skigebied => {  %>
+            <a href="?complex_name=<%= skigebied %>"><%= skigebied %></a>
+            <% }) %>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropdown-btn">Dorp</button>
+        <div class="content">
+            <% complexnamen.forEach(dorp => {  %>
+            <a href="?complex_name=<%= dorp %>"><%= dorp %></a>
+            <% }) %>
+        </div>
+    </div>
     <div class="dropdown">
         <button class="dropdown-btn">Complex naam</button>
         <div class="content">
-            <% data.forEach(info => {  %>
-                  
-                  
-            <a href="?complex_name=<%= info.complex_name %>"><%= info.complex_name %></a>
+            <% complexnamen.forEach(complex => {  %>
+            <a href="?complex_name=<%= complex %>"><%= complex %></a>
             <% }) %>
         </div>
     </div>
     <div class="dropdown">
         <button class="dropdown-btn">Aantal bedden</button>
         <div class="content">
-            <% data.forEach(info => {  %>
-            <a href="?numberOfBeds=<%= info.numberOfBeds %>"><%= info.numberOfBeds %></a>
+            <% beds.forEach(bed => {  %>
+            <a href="?numberOfBeds=<%= bed %>"><%= bed %></a>
             <% }) %>
         </div>
     </div>
     <div class="dropdown">
-        <button class="dropdown-btn">Aantal slaapkamers</button>
+        <button class="dropdown-btn">Slaapkamers</button>
         <div class="content">
-            <% data.forEach(info => {  %>
-            <a href="?bedroom=<% info.bedrooms %>"><%= info.numberOfBeds %></a>
+            <% bedrooms.forEach(bedroom => {  %>
+            <a href="?bedroom=<% bedroom %>"><%= bedroom %></a>
             <% }) %>
         </div>
     </div>
+    
 
     <nav>
         <p>Sorteren op:</p>
-        <a href="?sort=complex_name">complex naam</a>
-        <a href="?sort=numberOfBeds">aantal bedden</a>
-        <a href="?sort=bedrooms">aantal slaapkamers</a>
+        <a href="?sort=skigebied">Skigebied</a>
+        <a href="?sort=dorp">Dorp</a>
+        <a href="?sort=complex_name">Complex naam</a>
     </nav>
 
 
@@ -81,12 +94,9 @@
             <tbody>
                 <% data.forEach(info => {  %>
                 <tr>
-                    <td><% data2.forEach(info2=> {
-                        if(info.accomodationId == info2.accomodationId ){
-                            info2.skigebied
-                        }
-                    })  %></td>
-                    <td></td>
+                    
+                    <td><%= info.skigebied%></td>
+                    <td><%= info.dorp%></td>
                     <td><%= info.complex_name %></td>
                     <td><%= info.variantName %></td>
 

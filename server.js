@@ -23,6 +23,16 @@ const dataSportiek = [[sportiek], [sportiek1]]
 const [data1, data2] = await Promise.all(dataSportiek.map(fetchJson))
 const dataTotal = {data1, data2}
 
+const dorpen = {}
+const skigebieden = {}
+data2.forEach(acco => {
+  dorpen[acco.accomodationId] = acco.dorp;
+  skigebieden[acco.accomodationId] = acco.skigebied;
+});
+
+
+
+
 
 const data = data1.reduce((acc, item) => {
   const existingItem = acc.find((el) => el.variantName === item.variantName);
@@ -36,6 +46,8 @@ const data = data1.reduce((acc, item) => {
     // Voeg een nieuw item toe met de huidige variantName en datum
     acc.push({
       accomodationId: item.accomodationId,
+      dorp: dorpen[item.accomodationId],
+      skigebied: skigebieden[item.accomodationId],
       variantName: item.variantName,
       complex_name: item.complex_name,
       numberOfBeds: item.numberOfBeds,
@@ -48,6 +60,28 @@ const data = data1.reduce((acc, item) => {
   }
   return acc
 }, [])
+
+const complexnamen = []
+const beds = []
+const bedrooms = []
+
+data.forEach(datadingetje => {
+  if (!complexnamen.includes(datadingetje.complex_name)) {
+    complexnamen.push(datadingetje.complex_name)
+  }
+  if (!beds.includes(datadingetje.numberOfBeds)) {
+    beds.push(datadingetje.numberOfBeds)
+  }
+  if (!bedrooms.includes(datadingetje.bedrooms)) {
+    if (datadingetje.bedrooms != null){
+    bedrooms.push(datadingetje.bedrooms)
+  }}
+})
+
+
+complexnamen.sort()
+beds.sort()
+
 
 //sort function
 function sortData(sort_property){
@@ -65,6 +99,7 @@ function sortData(sort_property){
 // filter function
   function filterData(filter_property){
     const filteredData = data.filter(data => data.filter_property == filter_property)
+    console.log(filteredData)
   }
 
 //route
@@ -73,7 +108,7 @@ app.get("/", async function (request, response) {
   let complex_name = request.query.complex_name 
   sortData(sort)
   filterData(complex_name)
-  response.render("index", { data: data, data2: data2})
+  response.render("index", { data: data, data2: data2, dorpen: dorpen, skigebieden: skigebieden, complexnamen: complexnamen, beds: beds, bedrooms: bedrooms})
 })
 
 //poortnummer instellen
