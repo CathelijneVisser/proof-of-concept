@@ -19,13 +19,10 @@ app.use(express.static("public"))
 const sportiek = process.env.sportiek
 const sportiek1 = process.env.sportiek
 const dataSportiek = [sportiek]
-const dataSportiek1 = [sportiek1]
 const [data1] = await Promise.all(dataSportiek.map(fetchJson))
-const [data2] = await Promise.all(dataSportiek1.map(fetchJson))
-const data = { data1, data2 }
 
 
-const filterData = data1.reduce((acc, item) => {
+const data = data1.reduce((acc, item) => {
   const existingItem = acc.find((el) => el.variantName === item.variantName);
 
   if (existingItem) {
@@ -49,24 +46,31 @@ const filterData = data1.reduce((acc, item) => {
   return acc
 }, [])
 
-function sort(filter_property){
-  // complex_name
-  filterData.sort(function (a, b) {
-    if (a[filter_property] < b[filter_property]) {
+//sort function
+function sortData(sort_property){
+  data.sort(function (a, b) {
+    if (a[sort_property] < b[sort_property]) {
       return -1
     }
-    if (a[filter_property] > b[filter_property]) {
+    if (a[sort_property] > b[sort_property]) {
       return 1 
     }
     return 0
   })
 }
 
+//filter function
+  // function filterData(filter_property){
+  //   data.filter(filter_property)
+  // }
+
 //route
 app.get("/", async function (request, response) {
-  let filter = request.query.filter || "complex_name"
-  sort(filter)
-  response.render("index", { filterData: filterData })
+  let sort = request.query.sort || "complex_name"
+  let complex_name = request.query.complex_name 
+  sortData(sort)
+  console.log(sort)
+  response.render("index", { data: data, uniqueData: uniqueData })
 })
 
 //poortnummer instellen
@@ -81,4 +85,3 @@ async function fetchJson(urls) {
     .then((response) => response.json())
     .catch((error) => error)
 }
-

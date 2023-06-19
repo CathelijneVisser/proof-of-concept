@@ -8,6 +8,40 @@
 </head>
 
 <body>
+
+
+    <div class="dropdown">
+        <button class="dropdown-btn">Complex naam</button>
+        <div class="content">
+            <% uniqueData.forEach(info => {  %>
+            <a href="?complex_name=<%= info.complex_name %>"><%= info.complex_name %></a>
+            <% }) %>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropdown-btn">Aantal bedden</button>
+        <div class="content">
+            <% uniqueData.forEach(info => {  %>
+            <a href="?numberOfBeds=<%= info.numberOfBeds %>"><%= info.numberOfBeds %></a>
+            <% }) %>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropdown-btn">Aantal slaapkamers</button>
+        <div class="content">
+            <% uniqueData.forEach(info => {  %>
+            <a href="?bedroom=<% info.bedrooms %>"><%= info.numberOfBeds %></a>
+            <% }) %>
+        </div>
+    </div>
+
+    <nav>
+        <a href="?sort=complex_name">complex naam</a>
+        <a href="?sort=numberOfBeds">aantal bedden</a>
+        <a href="?sort=bedrooms">aantal slaapkamers</a>
+    </nav>
+
+
     <section>
         <table>
             <thead>
@@ -42,7 +76,7 @@
                 </tr>
             </thead>
             <tbody>
-                <% filterData.forEach(info => {  %>
+                <% data.forEach(info => {  %>
                 <tr>
                     <td></td>
                     <td></td>
@@ -75,11 +109,6 @@
                 <% }) %>
         </table>
     </section>
-    <nav>
-        <a href="?filter=complex_name">complex naam</a>
-        <a href="?filter=numberOfBeds">aantal bedden</a>
-        <a href="?filter=bedrooms">aantal slaapkamers</a>
-    </nav>
 
 </body>
 
