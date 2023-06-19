@@ -13,7 +13,9 @@
     <div class="dropdown">
         <button class="dropdown-btn">Complex naam</button>
         <div class="content">
-            <% uniqueData.forEach(info => {  %>
+            <% data.forEach(info => {  %>
+                  
+                  
             <a href="?complex_name=<%= info.complex_name %>"><%= info.complex_name %></a>
             <% }) %>
         </div>
@@ -21,7 +23,7 @@
     <div class="dropdown">
         <button class="dropdown-btn">Aantal bedden</button>
         <div class="content">
-            <% uniqueData.forEach(info => {  %>
+            <% data.forEach(info => {  %>
             <a href="?numberOfBeds=<%= info.numberOfBeds %>"><%= info.numberOfBeds %></a>
             <% }) %>
         </div>
@@ -29,13 +31,14 @@
     <div class="dropdown">
         <button class="dropdown-btn">Aantal slaapkamers</button>
         <div class="content">
-            <% uniqueData.forEach(info => {  %>
+            <% data.forEach(info => {  %>
             <a href="?bedroom=<% info.bedrooms %>"><%= info.numberOfBeds %></a>
             <% }) %>
         </div>
     </div>
 
     <nav>
+        <p>Sorteren op:</p>
         <a href="?sort=complex_name">complex naam</a>
         <a href="?sort=numberOfBeds">aantal bedden</a>
         <a href="?sort=bedrooms">aantal slaapkamers</a>
@@ -78,7 +81,11 @@
             <tbody>
                 <% data.forEach(info => {  %>
                 <tr>
-                    <td></td>
+                    <td><% data2.forEach(info2=> {
+                        if(info.accomodationId == info2.accomodationId ){
+                            info2.skigebied
+                        }
+                    })  %></td>
                     <td></td>
                     <td><%= info.complex_name %></td>
                     <td><%= info.variantName %></td>

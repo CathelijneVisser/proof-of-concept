@@ -17,9 +17,11 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.static("public"))
 
 const sportiek = process.env.sportiek
-const sportiek1 = process.env.sportiek
-const dataSportiek = [sportiek]
-const [data1] = await Promise.all(dataSportiek.map(fetchJson))
+const sportiek1 = process.env.sportiek1
+
+const dataSportiek = [[sportiek], [sportiek1]]
+const [data1, data2] = await Promise.all(dataSportiek.map(fetchJson))
+const dataTotal = {data1, data2}
 
 
 const data = data1.reduce((acc, item) => {
@@ -39,6 +41,7 @@ const data = data1.reduce((acc, item) => {
       numberOfBeds: item.numberOfBeds,
       bedrooms: item.bedrooms,
       duration: item.duration,
+      number: item.number,
       departurePricePersons: item.departurePricePersons,
       departureDates: [item.departureDate]
     })
@@ -59,18 +62,18 @@ function sortData(sort_property){
   })
 }
 
-//filter function
-  // function filterData(filter_property){
-  //   data.filter(filter_property)
-  // }
+// filter function
+  function filterData(filter_property){
+    const filteredData = data.filter(data => data.filter_property == filter_property)
+  }
 
 //route
 app.get("/", async function (request, response) {
   let sort = request.query.sort || "complex_name"
   let complex_name = request.query.complex_name 
   sortData(sort)
-  console.log(sort)
-  response.render("index", { data: data, uniqueData: uniqueData })
+  filterData(complex_name)
+  response.render("index", { data: data, data2: data2})
 })
 
 //poortnummer instellen
@@ -81,7 +84,7 @@ app.listen(app.get("port"), () => {
 })
 
 async function fetchJson(urls) {
-  return await fetch(`${process.env.sportiek}`)
+  return await fetch(urls)
     .then((response) => response.json())
     .catch((error) => error)
 }
