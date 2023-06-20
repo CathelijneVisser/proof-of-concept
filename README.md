@@ -1,33 +1,52 @@
-> _Fork_ deze leertaak en ga aan de slag. Onderstaande outline ga je gedurende deze taak in jouw eigen GitHub omgeving uitwerken. De instructie vind je in: [docs/INSTRUCTIONS.md](docs/INSTRUCTIONS.md)
-
-# Titel
-<!-- Geef je project een titel en schrijf in één zin wat het is -->
+# Sportiek
+Een website om de voorraad van sportiek te bekijken.
 
 ## Inhoudsopgave
 
-  * [Beschrijving](#beschrijving)
-  * [Gebruik](#gebruik)
-  * [Kenmerken](#kenmerken)
-  * [Installatie](#installatie)
-  * [Bronnen](#bronnen)
-  * [Licentie](#licentie)
+  * [📄 Beschrijving](#-beschrijving)
+  * [💻 Gebruik](#-gebruik)
+  * [📌 Kenmerken](#-kenmerken)
+  * [⚙️ Installatie](#%EF%B8%8F-installatie)
+  * [📁 Bronnen](#-bronnen)
+  * [🔒 Licentie](#-licentie)
 
-## Beschrijving
-<!-- Bij Beschrijving staat kort beschreven wat voor project het is en wat je hebt gemaakt -->
-<!-- Voeg een mooie poster visual toe 📸 -->
-<!-- Voeg een link toe naar Github Pages 🌐-->
+## 📄 Beschrijving
 
-## Gebruik
-<!-- Bij Gebruik staat de user story, hoe het werkt en wat je er mee kan. -->
+De website bestaat uit een tabel waarin de voorraden staan. Er staat in welk skigebied en dorp het ligt. Wat de naam en het kamer type zijn. Daarna staan de datums wanneer je aan kan komen en hoeveel kamers er vrij zijn.
+Er zijn 2 soorten labels de linkjes sorteren de data en de knoppen filteren de data.
 
-## Kenmerken
-<!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met JS gedaan en hoe? Misschien heb je iets met NodeJS gedaan, of heb je een framwork of library gebruikt? -->
+## 💻 Gebruik
 
-## Installatie
-<!-- Bij Instalatie staat hoe een andere developer aan jouw repo kan werken -->
+Je kan via het filter en sorteer systeem makkelijk en overzichtelijk zien wanneer en hoeveel kamers er vrij zijn waardoor Sportiek een goed overzicht heeft.
 
-## Bronnen
+## 📌 Kenmerken
+Voor dit project heb ik met node.js, express en ejs gewerkt. 
 
-## Licentie
+Ik heb node en expres gebruikt om de data uit 2 api's te halen ejs om javascript in mijn hmtl te gebruiken. 
 
+## ⚙️ Installatie
+Om (verder) te kunnen werken aan dit project, moet je de volgende stappen volgen:
+
+<ol>
+ <li> Instaleer node versie 18.15.0
+ <li> Clone deze repository
+ <li> Open de terminal (CTRL + `)
+ <li> Type 'npm install express ejs dotenv '
+ <li> Je ziet nu de node_modules map
+ <li> Maak een .env bestand met beide variable die in de example.env staan
+ <li> Type in terminal 'npm start'
+ <li> Klik link localhost
+</ol>
+
+Let op, er is gebruik gemaakt van een .env bestand.
+
+## 📁 Bronnen
+* [Leaflet](https://leafletjs.com/)
+* [Maptiler](https://www.maptiler.com/)
+* [socket.io](https://socket.io/get-started/chat)
+* [Openai](https://www.npmjs.com/package/openai)
+* [Front-End Performance Checklist](https://www.smashingmagazine.com/2021/01/front-end-performance-2021-free-pdf-checklist/)
+* Informatie uit de colleges van FDND
+
+## 🔒 Licentie
 This project is licensed under the terms of the [MIT license](./LICENSE).
