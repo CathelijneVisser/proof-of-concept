@@ -21,15 +21,14 @@ const sportiek1 = process.env.sportiek1
 
 const dataSportiek = [[sportiek], [sportiek1]]
 const [data1, data2] = await Promise.all(dataSportiek.map(fetchJson))
-const dataTotal = {data1, data2}
 
 const dorpen = {}
 const skigebieden = {}
-data2.forEach(acco => {
-  dorpen[acco.accomodationId] = acco.dorp;
-  skigebieden[acco.accomodationId] = acco.skigebied;
-});
 
+data2.forEach(acco => {
+  dorpen[acco.accomodationId] = acco.dorp
+  skigebieden[acco.accomodationId] = acco.skigebied
+})
 
 
 
@@ -98,8 +97,8 @@ function sortData(sort_property){
 
 // filter function
   function filterData(filter_property){
-    const filteredData = data.filter(data => data.filter_property == filter_property)
-    console.log(filteredData)
+    data.filter(a => a.filter_property == filter_property)
+    console.log("hoi")
   }
 
 //route
