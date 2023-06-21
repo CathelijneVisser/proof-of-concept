@@ -30,9 +30,6 @@ data2.forEach(acco => {
   skigebieden[acco.accomodationId] = acco.skigebied
 })
 
-
-
-
 const data = data1.reduce((acc, item) => {
   const existingItem = acc.find((el) => el.variantName === item.variantName);
 
@@ -96,19 +93,19 @@ function sortData(sort_property){
 }
 
 // filter function
-  function filterData(filter_property){
-    data.filter(a => a.filter_property == filter_property)
-    console.log("hoi")
+  function filterData(filter_property, input){
+    return data.filter(a => a[filter_property] == input)
   }
 
 //route
 app.get("/", async function (request, response) {
   let sort = request.query.sort || "complex_name"
-  let complex_name = request.query.complex_name 
+  let complex_name_input = request.query.complex_name 
+  let result = filterData("complex_name", complex_name_input)
   sortData(sort)
-  filterData(complex_name)
-  response.render("index", { data: data, data2: data2, dorpen: dorpen, skigebieden: skigebieden, complexnamen: complexnamen, beds: beds, bedrooms: bedrooms})
-})
+  
+    response.render("index", { data: result.length > 0 ? result : data, data2: data2, complexnamen: complexnamen, beds: beds, bedrooms: bedrooms})
+  })
 
 //poortnummer instellen
 app.set("port", 8000)
