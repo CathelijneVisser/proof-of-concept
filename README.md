@@ -31,10 +31,10 @@ Om (verder) te kunnen werken aan dit project, moet je de volgende stappen volgen
  <li> Instaleer node versie 18.15.0
  <li> Clone deze repository
  <li> Open de terminal (CTRL + `)
- <li> Type `` npm install express ejs dotenv``
+ <li> Type ``npm install express ejs dotenv``
  <li> Je ziet nu de node_modules map
  <li> Maak een .env bestand met beide variable die in de example.env staan
- <li> Type in terminal `` npm start ``
+ <li> Type in terminal ``npm start``
  <li> Klik link localhost
 </ol>
 
