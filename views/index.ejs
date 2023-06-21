@@ -28,7 +28,7 @@
         <button class="dropdown-btn">Complex naam</button>
         <div class="content">
             <% complexnamen.forEach(complex => {  %>
-            <a href="?complex_name=<%= complex %>"><%= complex %></a>
+            <a href="?filter=complex_name&value=<%= complex %>"><%= complex %></a>
             <% }) %>
         </div>
     </div>
@@ -36,7 +36,7 @@
         <button class="dropdown-btn">Aantal bedden</button>
         <div class="content">
             <% beds.forEach(bed => {  %>
-            <a href="?numberOfBeds=<%= bed %>"><%= bed %></a>
+            <a href="?filter=numberOfBeds&value=<%= bed %>"><%= bed %></a>
             <% }) %>
         </div>
     </div>
@@ -44,7 +44,7 @@
         <button class="dropdown-btn">Slaapkamers</button>
         <div class="content">
             <% bedrooms.forEach(bedroom => {  %>
-            <a href="?bedroom=<% bedroom %>"><%= bedroom %></a>
+            <a href="?filter=bedroom&value=<% bedroom %>"><%= bedroom %></a>
             <% }) %>
         </div>
     </div>
@@ -111,10 +111,10 @@
                         for(let i=0; i < dates.length; i++){
                            
                             if (info.departureDates.includes(dates[i])){
-                                %><td class="date" style="--bg-color: green;"></td><%
+                                %><td class="date" style="--bg-color: green;"><%= info.number %></td><%
                             }
                             else{
-                                %><td class="date" style="--bg-color: red;"></td><%
+                                %><td class="date" style="--bg-color: red;">0</td><%
                             }
                         }
                         

@@ -93,17 +93,18 @@ function sortData(sort_property){
 }
 
 // filter function
-  function filterData(filter_property, input){
-    return data.filter(a => a[filter_property] == input)
+  function filterData(filter, value){
+    console.log(filter, value)
+    return data.filter(a => a[filter] == value)
   }
 
 //route
 app.get("/", async function (request, response) {
   let sort = request.query.sort || "complex_name"
-  let complex_name_input = request.query.complex_name 
-  let result = filterData("complex_name", complex_name_input)
+  let filter = request.query.filter
+  let filterValue = request.query.value
+  let result = filterData(filter, filterValue)
   sortData(sort)
-  
     response.render("index", { data: result.length > 0 ? result : data, data2: data2, complexnamen: complexnamen, beds: beds, bedrooms: bedrooms})
   })
 
