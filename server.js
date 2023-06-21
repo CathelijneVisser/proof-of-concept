@@ -60,6 +60,8 @@ const data = data1.reduce((acc, item) => {
 const complexnamen = []
 const beds = []
 const bedrooms = []
+const uniekeDorpen = []
+const uniekeSkigebieden = []
 
 data.forEach(datadingetje => {
   if (!complexnamen.includes(datadingetje.complex_name)) {
@@ -72,12 +74,19 @@ data.forEach(datadingetje => {
     if (datadingetje.bedrooms != null){
     bedrooms.push(datadingetje.bedrooms)
   }}
+  if (!uniekeDorpen.includes(datadingetje.dorp)) {
+    if (datadingetje.dorp != null){
+      uniekeDorpen.push(datadingetje.dorp)
+  }}
+  if (!uniekeSkigebieden.includes(datadingetje.skigebied)) {
+    if (datadingetje.skigebied != null){
+      uniekeSkigebieden.push(datadingetje.skigebied)
+  }}
 })
-
 
 complexnamen.sort()
 beds.sort()
-
+console.log(uniekeDorpen)
 
 //sort function
 function sortData(sort_property){
@@ -105,7 +114,7 @@ app.get("/", async function (request, response) {
   let filterValue = request.query.value
   let result = filterData(filter, filterValue)
   sortData(sort)
-    response.render("index", { data: result.length > 0 ? result : data, data2: data2, complexnamen: complexnamen, beds: beds, bedrooms: bedrooms})
+    response.render("index", { data: result.length > 0 ? result : data, data2: data2, complexnamen: complexnamen, beds: beds, bedrooms: bedrooms, skigebieden: uniekeSkigebieden, dorpen: uniekeDorpen})
   })
 
 //poortnummer instellen

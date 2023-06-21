@@ -11,16 +11,16 @@
     <div class="dropdown">
         <button class="dropdown-btn">Skigebied</button>
         <div class="content">
-            <% complexnamen.forEach(skigebied => {  %>
-            <a href="?complex_name=<%= skigebied %>"><%= skigebied %></a>
+            <% skigebieden.forEach(skigebied => {  %>
+            <a href="?filter=skigebied&value=<%= skigebied %>"><%= skigebied %></a>
             <% }) %>
         </div>
     </div>
     <div class="dropdown">
         <button class="dropdown-btn">Dorp</button>
         <div class="content">
-            <% complexnamen.forEach(dorp => {  %>
-            <a href="?complex_name=<%= dorp %>"><%= dorp %></a>
+            <% dorpen.forEach(dorp => {  %>
+            <a href="?filter=dorp&value=<%= dorp %>"><%= dorp %></a>
             <% }) %>
         </div>
     </div>
@@ -75,7 +75,7 @@
                     <th class="date">06-01-2024</th>
                     <th class="date">13-01-2024</th>
                     <th class="date">20-01-2024</th>
-                    <th class="date">27-02-2024</th>
+                    <th class="date">27-01-2024</th>
                     <th class="date">03-02-2024</th>
                     <th class="date">10-02-2024</th>
                     <th class="date">17-02-2024</th>
@@ -114,7 +114,7 @@
                                 %><td class="date" style="--bg-color: green;"><%= info.number %></td><%
                             }
                             else{
-                                %><td class="date" style="--bg-color: red;">0</td><%
+                                %><td class="date" style="--bg-color: red;"><%= info.number %></td><%
                             }
                         }
                         

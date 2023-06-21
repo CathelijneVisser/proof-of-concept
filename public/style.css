@@ -63,3 +63,6 @@ dropdown
 .dropdown:hover .content {
     display: block;
 }
+.dropdown:focus .content {
+    display: block;
+}
