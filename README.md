@@ -12,6 +12,9 @@ Een website om de voorraad van sportiek te bekijken.
 
 ## 📄 Beschrijving
 
+![image](https://github.com/CathelijneVisser/proof-of-concept/assets/112855711/55e81fb3-46c8-4adb-8aee-6a22be81eab7)
+
+
 De website bestaat uit een tabel waarin de voorraden staan. Er staat in welk skigebied en dorp het ligt. Wat de naam en het kamer type zijn. Daarna staan de datums wanneer je aan kan komen en hoeveel kamers er vrij zijn.
 Er zijn 2 soorten labels de linkjes sorteren de data en de knoppen filteren de data.
 
